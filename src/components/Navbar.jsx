@@ -22,7 +22,12 @@ export default function Navbar() {
         </div>
       </div>
 
-      <button className="bg-blue-600 text-white px-5 py-2 rounded-full hover:scale-105 transition">
+      <button 
+        onClick={() => {
+          document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }}
+        className="bg-blue-600 text-white px-5 py-2 rounded-full hover:scale-105 transition"
+      >
         Book Test
       </button>
     </nav>

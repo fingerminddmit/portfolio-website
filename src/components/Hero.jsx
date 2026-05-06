@@ -40,7 +40,11 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             className="mt-6 flex gap-4"
           >
-            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:scale-105 transition">
+            <button 
+              onClick={() => {
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:scale-105 transition">
               Book Test
             </button>
 

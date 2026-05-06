@@ -76,7 +76,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-20 bg-primary text-white text-center">
+    <section className="py-20 bg-primary text-white text-center" id="contact">
       <h2 className="text-4xl font-bold">
         Register for Finger Mind DMIT
       </h2>
