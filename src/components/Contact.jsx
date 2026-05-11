@@ -53,39 +53,49 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
 
+    // ✅ Send Email
     emailjs
       .send(
-        "service_ksrqb6n", // email serviece id
-        "template_5fawzo8", // template id
+        "service_ksrqb6n",
+        "template_5fawzo8",
         {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
         },
-        "LuWe7qDvIc7qENAKW", // public key
+        "LuWe7qDvIc7qENAKW"
       )
       .then(() => {
         setLoading(false);
         setShowPopup(true);
-        setFormData({ name: "", email: "", phone: "" });
+
+        // ✅ WhatsApp Message
+        const phoneNumber = "919345342142";
+
+        const message = `Hello Finger Mind DMIT,
+
+        Name: ${formData.name}
+        Email: ${formData.email}
+        Phone: ${formData.phone}
+
+        I would like to register for the DMIT test.`;
+
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+        // ✅ Open WhatsApp
+        window.open(whatsappURL, "_blank");
+
+        // ✅ Clear Form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+        });
       })
       .catch((error) => {
         console.error("Email error:", error);
         setLoading(false);
       });
-
-      const phoneNumber = "919345342142"; // your WhatsApp number with country code
-
-      const message = `Hello Finger Mind DMIT,
-
-      Name: ${formData.name}
-      Email: ${formData.email}
-
-      I would like to register for the DMIT test.`;
-
-      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-      window.open(whatsappURL, "_blank");
   };
 
   return (
