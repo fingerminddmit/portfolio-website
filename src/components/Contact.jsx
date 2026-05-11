@@ -55,14 +55,14 @@ export default function Contact() {
 
     emailjs
       .send(
-        "service_ksrqb6n",      // email serviece id
-        "template_5fawzo8",     // template id
+        "service_ksrqb6n", // email serviece id
+        "template_5fawzo8", // template id
         {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
         },
-        "LuWe7qDvIc7qENAKW"       // public key
+        "LuWe7qDvIc7qENAKW", // public key
       )
       .then(() => {
         setLoading(false);
@@ -73,13 +73,24 @@ export default function Contact() {
         console.error("Email error:", error);
         setLoading(false);
       });
+
+      const phoneNumber = "919345342142"; // your WhatsApp number with country code
+
+      const message = `Hello Finger Mind DMIT,
+
+      Name: ${formData.name}
+      Email: ${formData.email}
+
+      I would like to register for the DMIT test.`;
+
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappURL, "_blank");
   };
 
   return (
     <section className="py-20 bg-primary text-white text-center" id="contact">
-      <h2 className="text-4xl font-bold">
-        Register for Finger Mind DMIT
-      </h2>
+      <h2 className="text-4xl font-bold">Register for Finger Mind DMIT</h2>
 
       <form
         onSubmit={handleSubmit}
